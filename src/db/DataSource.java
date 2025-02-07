@@ -13,6 +13,9 @@ public class DataSource {
     public static Scanner intScanner = new Scanner(System.in);
     public static ArrayList<User> users = new ArrayList<>();
     public static User currentUser;
+    public static User  getCurrentUser(){return currentUser;};
+    public static void  setCurrentUser(User user){currentUser=user;};
+
     public static ArrayList<Section> sections = new ArrayList<>();
 
     static {

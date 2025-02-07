@@ -6,7 +6,7 @@ import java.util.List;
 
 public class User {
     private String id;
-    private Role role;
+    private Role role=Role.USER;
     private String name;
     private String surname;
     private String email;
