@@ -64,17 +64,18 @@ public class Section {
                 '}';
     }
     public String toString(User user) {
-            if(user.getRole().equals(Role.USER)) {
-                return "Section{" +
-                        "id='" + id + '\'' +
-                        ", name='" + name +
-                        '}';
-            }
+
+        if(user.getRole().equals(Role.USER)) {
             return "Section{" +
                     "id='" + id + '\'' +
-                    ", name='" + name + '\'' +
-                    ", status=" + status +
+                    ", name='" + name +
                     '}';
+        }
+        return "Section{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                '}';
     }
 }
 

@@ -28,13 +28,17 @@ public class DataSource {
         ArrayList<Book> bookss1 = new ArrayList<>();
         Section harry = new Section(UUID.randomUUID().toString(), "Harry",bookss1, SectionState.ENABLED);
         Book book1 = new Book("Sariq devni minib","Hudoyberdi To'xtaboyev",harry,10);
+book1.setAvailableBook(10);
         Book book2 = new Book("O'tgan kunlar","Abdulla qodiriy",harry,5);
+        book2.setAvailableBook(5);
         bookss1.add(book1);
         bookss1.add(book2);
         ArrayList<Book> bookss2 = new ArrayList<>();
         Section potter = new Section(UUID.randomUUID().toString(), "Potter", bookss2, SectionState.ENABLED);
         Book book3 = new Book("Farhod va Shirin","Alisher Navoiy",potter,10);
+        book3.setAvailableBook(10);
         Book book4 = new Book("Oq Kema","Chingiz Aytmatov",potter,5);
+        book4.setAvailableBook(5);
         bookss2.add(book3);
         bookss2.add(book4);
         sections.add(harry);
