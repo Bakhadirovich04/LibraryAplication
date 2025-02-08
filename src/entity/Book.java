@@ -1,23 +1,23 @@
 package entity;
 
+import java.util.UUID;
+
 public class Book {
-    private String id;
+    private String id = UUID.randomUUID().toString();
     private String title;
     private String author;
     private Section section;
     private Integer totalBook;
-    private Integer availableBook;
+    private Integer availableBook = getTotalBook();
 
     public Book() {
     }
 
-    public Book(String id, String title, String author, Section section, Integer totalBook, Integer availableBook) {
-        this.id = id;
+    public Book(String title, String author, Section section, Integer totalBook) {
         this.title = title;
         this.author = author;
         this.section = section;
         this.totalBook = totalBook;
-        this.availableBook = availableBook;
     }
 
     public String getId() {
@@ -74,7 +74,6 @@ public class Book {
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", section=" + section +
                 ", totalBook=" + totalBook +
                 ", availableBook=" + availableBook +
                 '}';

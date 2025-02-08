@@ -3,12 +3,13 @@ package entity;
 import entity.enums.SectionState;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Section {
-    private String id;
+    private String id = UUID.randomUUID().toString();
     private String name;
     private List<Book> books;
-    private SectionState status;
+    private SectionState status = SectionState.ENABLED;
 
     public Section() {
     }
@@ -57,7 +58,6 @@ public class Section {
         return "Section{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", books=" + books +
                 ", status=" + status +
                 '}';
     }
