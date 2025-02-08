@@ -11,14 +11,14 @@ import static db.DataSource.*;
 public class AuthService {
     public static void service() {
         while (true) {
-            System.out.println("==================================");
+            System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
             System.out.print("""
                     Main Menu👇
                     0.End the program
                     1.Sign Up
                     2.Sign In
                     """);
-            System.out.println("==================================");
+            System.out.println("⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️");
             System.out.print("Select Comanda: ");
             switch (intScanner.nextInt()) {
                 case 0 -> {
@@ -79,8 +79,8 @@ public class AuthService {
         for (User user : users) {
             if(user.getEmail().equals(email)&&user.getPassword().equals(pass)){
                 setCurrentUser(user);
-                chekLogin=false;
-                break;
+                 chekLogin=false;
+                          break;
             }
         }
         if(chekLogin){
@@ -90,7 +90,7 @@ public class AuthService {
             UserService.service();
         }
         else if(getCurrentUser().getRole().equals(Role.ADMIN)){
-            //AdminService.service();
+            AdminService.service();
         }
     }
 
