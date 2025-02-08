@@ -79,8 +79,8 @@ public class AuthService {
         for (User user : users) {
             if(user.getEmail().equals(email)&&user.getPassword().equals(pass)){
                 setCurrentUser(user);
-                chekLogin=false;
-                break;
+                 chekLogin=false;
+                          break;
             }
         }
         if(chekLogin){
@@ -90,7 +90,7 @@ public class AuthService {
             UserService.service();
         }
         else if(getCurrentUser().getRole().equals(Role.ADMIN)){
-            //AdminService.service();
+            AdminService.service();
         }
     }
 
