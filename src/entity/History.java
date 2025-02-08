@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 public class History {
     private String id;
-    private User user;
     private Book book;
     private LocalDateTime borrowedDate;
     private LocalDateTime returnDate;
@@ -12,18 +11,15 @@ public class History {
     public History() {
     }
 
-    public History(String id, User user, Book book, LocalDateTime borrowedDate, LocalDateTime returnDate) {
+    public History(String id, Book book, LocalDateTime borrowedDate, LocalDateTime returnDate) {
         this.id = id;
-        this.user = user;
         this.book = book;
         this.borrowedDate = borrowedDate;
         this.returnDate = returnDate;
     }
 
 
-    public User getUser() {
-        return user;
-    }
+
 
     public String getId() {
         return id;
@@ -31,10 +27,6 @@ public class History {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Book getBook() {
@@ -65,7 +57,6 @@ public class History {
     public String toString() {
         return "History{" +
                 "id='" + id + '\'' +
-                ", user=" + user +
                 ", book=" + book +
                 ", borrowedDate=" + borrowedDate +
                 ", returnDate=" + returnDate +

@@ -3,6 +3,7 @@ import entity.*;
 import entity.enums.BorrowState;
 import entity.enums.SectionState;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class AdminService {
                       showUser();
                 }
                 default -> {
-
+                    System.out.println("Input error😡");
                 }
 
             }
@@ -71,7 +72,25 @@ public class AdminService {
     }
 
     private static void showUser() {
+        System.out.println("Enter UserId: ");
+        String id = strScanner.nextLine();
+        boolean bor = false;
+        for (int i = 0; i < users.size() ; i++) {
+          if( Objects.equals(id,users.get(i).getId())) {
+                bor = true;
+                User user = users.get(i);
+              System.out.println("              User:      ");
+              System.out.println(user);
+              System.out.println("Borrow: "+user.getBorrowList());
+              System.out.println("History: "+user.getHistories());
+            }
+        }
+        if(!bor){
+            System.out.println("This user does not exist on the network😡");
+        }
     }
+
+
 
     private static void bookState() {
         System.out.println("Enter book Id: ");
@@ -79,121 +98,26 @@ public class AdminService {
         System.out.println("Enter book selection name: ");
         String selName = strScanner.nextLine();
         if (testBook(id)&& testSection(selName)) {
-            String choose = """
-                         Choose book state:
-                     0.Back🔙
-                     1.Borrowed
-                     2.Returned,
-                     3.Time over
-                          """;
-            System.out.println(choose);
-            switch (intScanner.nextInt()){
-                case 0->{
-                       return;
-                }
-                case 1->{
-                    borrowBook(selName,id);
-                    //   currentBook.setBookState();
-                }
-                case 2->{
-                    returnedBook(selName,id);
-
-                }
-                default -> {
-
-                }
-            }
+            System.out.println("========================================================================");
+            System.out.println("       Book State:  ");
+            System.out.println(currentBook);
+            System.out.println("========================================================================");
 
         }else{
             System.out.println("You do not have such a book😊");
         }
     }
 
-    private static void returnedBook(String selName,String id) {
-
-        System.out.println("Enter User Id: ");
-        String idUser = strScanner.nextLine();
-
-        boolean bor = false;
-        for (int i = 0; i < users.size() ; i++) {
-            if(Objects.equals(idUser,users.get(i).getName()) ){
-                User user = users.get(i);
-                bor = true;
-                List<Borrow> borrowList = user.getBorrowList();
-                for (int j = 0; j < borrowList.size() ; j++) {
-                    if(Objects.equals(currentBook.getId(),borrowList.get(i).getBook().getId())){
-                        Borrow borrow = borrowList.get(i);
-                       if(Objects.equals(borrow.getBorrowState(),BorrowState.BORROWED)){
-                           borrow.getBook().setAvailableBook(borrow.getBook().getAvailableBook()+1);
-                           LocalDateTime now = LocalDateTime.now();
-                           borrow.setReturnTime(now);
-
-                           //////////////////////////////////////////////////////
-                           borrowList.remove(borrow);
-
-                       }
-
-                    }
-                }
-
-            }
-
-        }
-    }
-
-    private static void borrowBook(String name,String Id) {
-        System.out.println("Enter User Id: ");
-         String IdUser = strScanner.nextLine();
-              boolean bor = false;
-           if (testSection(name) && testBook(Id)) {
-            for (int i = 0; i < users.size() ; i++) {
-                if(Objects.equals(IdUser,users.get(i).getId())){
-                    if(currentBook.getAvailableBook()>0){
-                        bor =  true;
-                        User user =users.get(i);
-                        // Brow qilish
-                        Borrow borrow = new Borrow();
-                        borrow.setId(UUID.randomUUID().toString());
-                        borrow.setUser(users.get(i));
-                        borrow.setBook(currentBook);
-                        borrow.setBorrowState(BorrowState.BORROWED);
-                        borrow.setBorrowedTime(LocalDateTime.now());
-                        currentBook.setAvailableBook(currentBook.getAvailableBook()-1);
-                        List<Borrow> borrowList = user.getBorrowList();
-                        if(borrowList.size()<5){
-                            borrowList.add(borrow);
-
-                            //Historyga qo'shish
-                            History history = new History();
-                            history.setId(UUID.randomUUID().toString());
-                            history.setBorrowedDate(LocalDateTime.now());
-                            history.setUser(user);
-                            history.setBook(currentBook);
-                            List<History> histories = user.getHistories();
-                            histories.add(history);
-
-                        }else{
-                            System.out.println("You are out of your limit😔");
-                        }
-                    }else{
-                        System.out.println(" Sorry Now all these books are busy😔");
-                    }
-                }
-            }
-            if(!bor){
-                System.out.println("This user does not exist on the network😊");
-            }
-        }else{
-               System.out.println("You do not have such a book😊");
-           }
-
-    }
-
 
 
     private static void showUsers() {
+        System.out.println("                             Users:        ");
+        for (int i = 0; i < users.size() ; i++) {
+            System.out.println(i+1+".User = >Id:  "+users.get(i).getId() +"  userName: "+users.get(i).getName());
+        }
 
     }
+
 
     private static void removeBook() {
         System.out.println("Enter book Id: ");
@@ -212,6 +136,7 @@ public class AdminService {
 
     }
 
+
     private static boolean testBook(String Id) {
         List<Book> books = currentSection.getBooks();
         for (int i = 0;i< books.size();i++){
@@ -223,6 +148,7 @@ public class AdminService {
         return false;
     }
 
+
     private static void addBook() {
         Book book  = new Book();
         System.out.println("Enter book name: ");
@@ -230,8 +156,10 @@ public class AdminService {
         System.out.println("Enter book author: ");
         book.setAuthor(strScanner.nextLine());
         System.out.println("Enter book total Book: ");
-        book.setTotalBook(intScanner.nextInt());
-        book.setAvailableBook(book.getTotalBook());
+
+         book.setTotalBook(intScanner.nextInt());
+         book.setAvailableBook(book.getTotalBook());
+
         System.out.println("=======================================================");
         System.out.println(  "   Choose book section:  ");
         for (int i = 0; i < sections.size(); i++) {
@@ -248,6 +176,7 @@ public class AdminService {
             System.out.println("Section input error😡");
         }
     }
+
 
     private static void showSection() {
 
@@ -270,6 +199,7 @@ public class AdminService {
             System.out.println("You do not have such a section😔");
         }
     }
+
 
     private static void sectionState() {
         System.out.println("Enter section name: ");
@@ -306,6 +236,7 @@ public class AdminService {
 
     }
 
+
     private static void showSections() {
         System.out.println("===============================================================================");
         System.out.println("                 SECTIONS:");
@@ -314,6 +245,7 @@ public class AdminService {
         }
         System.out.println("===============================================================================");
     }
+
 
     private static void addSection() {
         Section section = new Section();

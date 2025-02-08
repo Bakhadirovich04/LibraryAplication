@@ -1,9 +1,7 @@
 package service;
 
 import entity.Book;
-import entity.Borrow;
-import entity.History;
-import entity.Section;
+import entity.*;
 import entity.enums.BorrowState;
 import entity.enums.SectionState;
 
@@ -11,10 +9,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static db.DataSource.*;
-/*
-* Section to string
-* book available degan joyi
-* add book Admin Service*/
 public class UserService {
     public static void service(){
         while (true) {
@@ -126,7 +120,14 @@ public class UserService {
             borrow12.setReturnTime(LocalDateTime.now());
             borrow12.getBook().setAvailableBook(borrow12.getBook().getAvailableBook()+1);
             borrow12.setBorrowState(BorrowState.RETURNED);
+            for (History history : getCurrentUser().getHistories()) {
+                 if(history.getBorrowedDate().equals(borrow12.getBorrowedTime())){
+                     history.setReturnDate(LocalDateTime.now());
+                     break;
+                 }
+            }
             getCurrentUser().setCountBook(getCurrentUser().getCountBook()-1);
+            System.out.println("The book has been returned successfully...✔️");
         }
 
     }
@@ -185,7 +186,7 @@ public class UserService {
                         Borrow borrow = new Borrow(UUID.randomUUID().toString(), getCurrentUser(), book12, BorrowState.BORROWED, LocalDateTime.now(), null);
                         getCurrentUser().getBorrowList().add(borrow);
                         getCurrentUser().setCountBook(getCurrentUser().getCountBook()+1);
-                        getCurrentUser().getHistories().add(new History(UUID.randomUUID().toString(), getCurrentUser(), book12, borrow.getBorrowedTime(), null));
+                        getCurrentUser().getHistories().add(new History(UUID.randomUUID().toString(), book12, borrow.getBorrowedTime(), null));
                         System.out.println("The book was successfully borrowed..✔️");
                     }
                     else{
