@@ -15,7 +15,7 @@ public class UserService {
             System.out.println();
             System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
             System.out.print("""
-                    ⬇️User Menu⬇️
+                              ⬇️User Menu⬇️
                     0.Return to Main Menu
                     1.Show sections
                     2.Show section

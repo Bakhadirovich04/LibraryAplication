@@ -13,7 +13,7 @@ public class AuthService {
         while (true) {
             System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
             System.out.print("""
-                    Main Menu👇
+                               Main Menu👇
                     0.End the program
                     1.Sign Up
                     2.Sign In
@@ -43,6 +43,16 @@ public class AuthService {
         System.out.println("SignUp process✔️.......");
         System.out.println("**********************************");
         User user=new User();
+        /* private String id;
+    private Role role=Role.USER;
+    private String name;
+    private String surname;
+    private String email;
+    private Integer countBook=0;
+    private String password;
+    private List<History> histories;
+    private List<Borrow> borrowList;
+    private Double balance = 100000.0;*/
         System.out.print("Enter name: ");
         String name =strScanner.nextLine();
         System.out.print("Enter surname: ");
@@ -51,6 +61,7 @@ public class AuthService {
         String email=strScanner.nextLine();
         if(!checkEmail(email)){
             System.out.print("Enter password: ");
+            user.setEmail(email);
             user.setPassword(strScanner.nextLine());
             user.setId(UUID.randomUUID().toString());
             user.setName(name);
@@ -80,17 +91,19 @@ public class AuthService {
             if(user.getEmail().equals(email)&&user.getPassword().equals(pass)){
                 setCurrentUser(user);
                  chekLogin=false;
-                          break;
+                 break;
             }
         }
         if(chekLogin){
             System.out.println("There is no such password or login");
         }
-        else if(getCurrentUser().getRole().equals(Role.USER)){
+        else{
+            if (getCurrentUser().getRole().equals(Role.USER)){
             UserService.service();
-        }
-        else if(getCurrentUser().getRole().equals(Role.ADMIN)){
+            }
+            else if(getCurrentUser().getRole().equals(Role.ADMIN)){
             AdminService.service();
+            }
         }
     }
 
