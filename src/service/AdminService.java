@@ -231,6 +231,7 @@ public class AdminService {
         book.setAuthor(strScanner.nextLine());
         System.out.println("Enter book total Book: ");
         book.setTotalBook(intScanner.nextInt());
+        book.setAvailableBook(book.getTotalBook());
         System.out.println("=======================================================");
         System.out.println(  "   Choose book section:  ");
         for (int i = 0; i < sections.size(); i++) {

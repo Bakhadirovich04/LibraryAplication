@@ -10,6 +10,7 @@ public class User {
     private String name;
     private String surname;
     private String email;
+    private Integer countBook=0;
     private String password;
     private List<History> histories;
     private List<Borrow> borrowList;
@@ -28,6 +29,14 @@ public class User {
         this.histories = histories;
         this.borrowList = borrowList;
         this.balance = balance;
+    }
+
+    public Integer getCountBook() {
+        return countBook;
+    }
+
+    public void setCountBook(Integer countBook) {
+        this.countBook = countBook;
     }
 
     public String getId() {
