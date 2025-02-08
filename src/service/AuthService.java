@@ -1,4 +1,5 @@
-import entity.Borrow;
+package service;
+
 import entity.User;
 import entity.enums.Role;
 
@@ -78,18 +79,18 @@ public class AuthService {
         for (User user : users) {
             if(user.getEmail().equals(email)&&user.getPassword().equals(pass)){
                 setCurrentUser(user);
-                chekLogin=false;
-                break;
+                 chekLogin=false;
+                          break;
             }
         }
         if(chekLogin){
             System.out.println("There is no such password or login");
         }
         else if(getCurrentUser().getRole().equals(Role.USER)){
-            //UserService.service();
+            UserService.service();
         }
         else if(getCurrentUser().getRole().equals(Role.ADMIN)){
-            //AdminService.service();
+            AdminService.service();
         }
     }
 
