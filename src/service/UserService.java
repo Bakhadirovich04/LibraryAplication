@@ -1,20 +1,5 @@
 package service;
 
-import entity.Book;
-import entity.Borrow;
-import entity.History;
-import entity.Section;
-import entity.enums.BorrowState;
-import entity.enums.SectionState;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
-
-import static db.DataSource.*;
-/*
-* Section to string
-* book available degan joyi
-* add book Admin Service*/
 public class UserService {
     public static void service(){
         while (true) {
