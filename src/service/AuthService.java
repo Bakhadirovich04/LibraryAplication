@@ -11,14 +11,14 @@ import static db.DataSource.*;
 public class AuthService {
     public static void service() {
         while (true) {
-            System.out.println("==================================");
+            System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
             System.out.print("""
                     Main Menu👇
                     0.End the program
                     1.Sign Up
                     2.Sign In
                     """);
-            System.out.println("==================================");
+            System.out.println("⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️");
             System.out.print("Select Comanda: ");
             switch (intScanner.nextInt()) {
                 case 0 -> {
