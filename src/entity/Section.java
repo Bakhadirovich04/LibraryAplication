@@ -64,6 +64,7 @@ public class Section {
                 '}';
     }
     public String toString(User user) {
+
         if(user.getRole().equals(Role.USER)) {
             return "Section{" +
                     "id='" + id + '\'' +
@@ -77,3 +78,5 @@ public class Section {
                 '}';
     }
 }
+
+
