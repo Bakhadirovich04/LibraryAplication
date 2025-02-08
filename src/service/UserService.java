@@ -117,7 +117,6 @@ public class UserService {
             System.out.println("There is no such book...❌❌");
         }
         else {
-            borrow12.setReturnTime(LocalDateTime.now());
             borrow12.getBook().setAvailableBook(borrow12.getBook().getAvailableBook()+1);
             borrow12.setBorrowState(BorrowState.RETURNED);
             for (History history : getCurrentUser().getHistories()) {
