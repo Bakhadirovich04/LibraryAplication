@@ -1,5 +1,7 @@
 package entity;
 
+import entity.enums.Role;
+
 import java.util.UUID;
 
 public class Book {
@@ -8,7 +10,7 @@ public class Book {
     private String author;
     private Section section;
     private Integer totalBook;
-    private Integer availableBook = getTotalBook();
+    private Integer availableBook;
 
     public Book() {
     }
@@ -18,6 +20,7 @@ public class Book {
         this.author = author;
         this.section = section;
         this.totalBook = totalBook;
+        this.availableBook=totalBook;
     }
 
     public String getId() {
@@ -77,5 +80,22 @@ public class Book {
                 ", totalBook=" + totalBook +
                 ", availableBook=" + availableBook +
                 '}';
+    }
+    public String toString(User user) {
+        if(user.getRole().equals(Role.USER)) {
+            return "Book{" +
+                    "id='" + id + '\'' +
+                    ", title='" + title + '\'' +
+                    ", author='" + author +
+                    '}';
+        }
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", totalBook=" + totalBook +
+                ", availableBook=" + availableBook +
+                '}';
+
     }
 }

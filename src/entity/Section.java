@@ -1,5 +1,6 @@
 package entity;
 
+import entity.enums.Role;
 import entity.enums.SectionState;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class Section {
     private String name;
     private List<Book> books;
     private SectionState status = SectionState.ENABLED;
+
 
     public Section() {
     }
@@ -55,6 +57,19 @@ public class Section {
 
     @Override
     public String toString() {
+        return "Section{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                '}';
+    }
+    public String toString(User user) {
+        if(user.getRole().equals(Role.USER)) {
+            return "Section{" +
+                    "id='" + id + '\'' +
+                    ", name='" + name +
+                    '}';
+        }
         return "Section{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
