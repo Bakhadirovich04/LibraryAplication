@@ -50,6 +50,8 @@ public class UserService {
         System.out.println("============================================================================================");
         if(getCurrentUser().getHistories().isEmpty()){
             System.out.println("The history list is empty..🚫🚫");
+            System.out.println("============================================================================================");
+
             return;
         }
         for (History history : getCurrentUser().getHistories()) {
