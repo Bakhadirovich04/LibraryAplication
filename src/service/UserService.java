@@ -13,9 +13,9 @@ public class UserService {
     public static void service(){
         while (true) {
             System.out.println();
-            System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
+            System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
             System.out.print("""
-                              ⬇️User Menu⬇️
+                                                              ⬇️User Menu⬇️
                     0.Return to Main Menu
                     1.Show sections
                     2.Show section
@@ -24,7 +24,7 @@ public class UserService {
                     5.Current Borrowed Books
                     6.History
                     """);
-            System.out.println("⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️");
+            System.out.println("⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️");
             System.out.print("Select Comanda: ");
             switch (intScanner.nextInt()) {
                 case 0 -> {System.out.println("You have returned to the Main menu↪️↪️↪️");return;}
@@ -41,15 +41,15 @@ public class UserService {
 
     private static void history() {
         System.out.println();
-        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
-        System.out.println("**********************************************");
-        System.out.println("           History process✔️.......");
-        System.out.println("**********************************************");
-        System.out.println("______________________________________________");
-        System.out.println("           ⬇️️History of borrowed books⬇️");
-        System.out.println("===============================================");
+        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
+        System.out.println("********************************************************************************************");
+        System.out.println("                               History process✔️.......");
+        System.out.println("********************************************************************************************");
+        System.out.println("____________________________________________________________________________________________");
+        System.out.println("                            ⬇️️History of borrowed books⬇️");
+        System.out.println("============================================================================================");
         if(getCurrentUser().getHistories().isEmpty()){
-            System.out.println("No history of borrowed books..🚫🚫");
+            System.out.println("The history list is empty..🚫🚫");
             return;
         }
         for (History history : getCurrentUser().getHistories()) {
@@ -57,18 +57,18 @@ public class UserService {
 
         }
 
-        System.out.println("===============================================");
+        System.out.println("============================================================================================");
     }
 
     private static void currentBorrowedBooks() {
         System.out.println();
-        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
-        System.out.println("**********************************************");
-        System.out.println("        Current Borrowed Book process✔️.......");
-        System.out.println("**********************************************");
-        System.out.println("______________________________________________");
-        System.out.println("            ⬇️My books List⬇️");
-        System.out.println("===============================================");
+        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
+        System.out.println("********************************************************************************************");
+        System.out.println("                               Current Borrowed Book process✔️.......");
+        System.out.println("********************************************************************************************");
+        System.out.println("____________________________________________________________________________________________");
+        System.out.println("                                       ⬇️My books List⬇️");
+        System.out.println("============================================================================================");
         boolean checkBorrowed=true;
         for (Borrow borrow : getCurrentUser().getBorrowList()) {
             if (borrow.getBorrowState().equals(BorrowState.BORROWED)) {
@@ -79,29 +79,36 @@ public class UserService {
         if(checkBorrowed){
             System.out.println("The list of borrowed books is empty..🚫🚫");
         }
-        System.out.println("===============================================");
+        System.out.println("============================================================================================");
 
     }
 
     private static void returnBook() {
         System.out.println();
-        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
-        System.out.println("**********************************");
-        System.out.println("        Return Book process✔️.......");
-        System.out.println("**********************************");
-        System.out.println("__________________________________");
-        System.out.println("       ⬇️My books List⬇️");
-        System.out.println("==================================");
+        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
+        System.out.println("********************************************************************************************");
+        System.out.println("                                    Return Book process✔️.......");
+        System.out.println("********************************************************************************************");
+        System.out.println("____________________________________________________________________________________________");
+        System.out.println("                                       ⬇️My books List⬇️");
+        System.out.println("============================================================================================");
         if(getCurrentUser().getBorrowList().isEmpty()){
             System.out.println("The list of borrowed books is empty..🚫🚫");
             return;
         }
+        boolean checkBorrowed=true;
         for (Borrow borrow : getCurrentUser().getBorrowList()) {
             if (borrow.getBorrowState().equals(BorrowState.BORROWED)) {
+                checkBorrowed=false;
                 System.out.println(borrow.getBook().toString(getCurrentUser()));
             }
         }
-        System.out.println("==================================");
+        if(checkBorrowed){
+            System.out.println("The list of borrowed books is empty..🚫🚫");
+            System.out.println("============================================================================================");
+            return;
+        }
+        System.out.println("============================================================================================");
         System.out.print("Select the title of the book you want to return: ");
         String title = strScanner.nextLine();
         Borrow borrow12=null;
@@ -133,23 +140,25 @@ public class UserService {
 
     private static void borrow() {
         System.out.println();
-        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
-        System.out.println("**********************************");
-        System.out.println("        Borrow process✔️.......");
-        System.out.println("**********************************");
-        System.out.println("__________________________________");
-        System.out.println("      ⬇️Sections List⬇️");
-        System.out.println("==================================");
+        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
+        System.out.println("********************************************************************************************");
+        System.out.println("                              Borrow process✔️.......");
+        System.out.println("********************************************************************************************");
+        System.out.println("____________________________________________________________________________________________");
+        System.out.println("                                  ⬇️Sections List⬇️");
+        System.out.println("============================================================================================");
         for (Section section : sections) {
-            System.out.println(section.toString(getCurrentUser()));
+            if(section.getStatus().equals(SectionState.ENABLED)) {
+                System.out.println(section.toString(getCurrentUser()));
+            }
         }
-        System.out.println("==================================");
+        System.out.println("============================================================================================");
         System.out.print("Enter the section name: ");
         String name =strScanner.nextLine();
         boolean checkName=true;
         Section  section2=null;
         for (Section section : sections) {
-            if(section.getName().equals(name)){
+            if(section.getName().equals(name)&&section.getStatus().equals(SectionState.ENABLED)){
                 checkName=false;
                 section2=section;
                 break;
@@ -159,11 +168,11 @@ public class UserService {
             System.out.println("Section name was entered incorrectly❌❌");
         }
         else{
-            System.out.println("=============⬇️"+name+" books⬇️=====================");
+            System.out.println("==============================================================⬇️"+name+" books⬇️==============================================================");
             for (Book book : section2.getBooks()) {
                 System.out.println(book);
             }
-            System.out.println("=====================================================");
+            System.out.println("============================================================================================================================================");
             System.out.print("Select book id : ");
             String id=strScanner.nextLine();
             Book book12=null;
@@ -203,36 +212,44 @@ public class UserService {
 
     private static void showSection() {
         System.out.println();
-        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
-        System.out.println("**********************************");
-        System.out.println("        Section process✔️.......");
-        System.out.println("**********************************");
+        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
+        System.out.println("********************************************************************************************");
+        System.out.println("                              Section process✔️.......");
+        System.out.println("********************************************************************************************");
         System.out.print(" Enter section name: ");
         Section section1 = null;
         String name=strScanner.nextLine();
         for (Section section : sections) {
-            if(section.getName().equals(name)){
+            if(section.getName().equals(name)&&section.getStatus().equals(SectionState.ENABLED)){
                 section1=section;
                 break;
             }
         }
         if(section1!=null) {
+            System.out.println("==============================================================⬇️"+name+" books⬇️==============================================================");
             for (Book book : section1.getBooks()) {
                 System.out.println(book);
             }
+            System.out.println("============================================================================================================================================");
+
+        }
+        else{
+            System.out.println("There is no such section...❌❌");
         }
 
     }
 
-    private static void showSections() {
+    private static void showSections(){
         System.out.println();
-        System.out.println("**********************************");
-        System.out.println("         ⬇️Sections⬇️");
-        System.out.println("**********************************");
+        System.out.println("⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️");
+        System.out.println("********************************************************************************************");
+        System.out.println("                                 ⬇️Sections⬇️");
+        System.out.println("********************************************************************************************");
         for (Section section : sections) {
             if(section.getStatus()== SectionState.ENABLED){
                 System.out.println(section.toString(getCurrentUser()));
             }
         }
+        System.out.println("============================================================================================");
     }
 }

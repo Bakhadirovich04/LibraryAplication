@@ -43,16 +43,6 @@ public class AuthService {
         System.out.println("SignUp process✔️.......");
         System.out.println("**********************************");
         User user=new User();
-        /* private String id;
-    private Role role=Role.USER;
-    private String name;
-    private String surname;
-    private String email;
-    private Integer countBook=0;
-    private String password;
-    private List<History> histories;
-    private List<Borrow> borrowList;
-    private Double balance = 100000.0;*/
         System.out.print("Enter name: ");
         String name =strScanner.nextLine();
         System.out.print("Enter surname: ");
