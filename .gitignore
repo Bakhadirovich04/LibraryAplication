@@ -1,4 +1,6 @@
 ### IntelliJ IDEA ###
 out/
-.idea/
+*.idea/
 *.iml/
+.gitignore/
+LibraryAplication.iml/
