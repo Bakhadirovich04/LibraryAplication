@@ -9,6 +9,10 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class DataSource {
+    public static void refresh(){
+        strScanner = new Scanner(System.in);
+        intScanner = new Scanner(System.in);
+    }
     public static Scanner strScanner = new Scanner(System.in);
     public static Scanner intScanner = new Scanner(System.in);
     public static ArrayList<User> users = new ArrayList<>();

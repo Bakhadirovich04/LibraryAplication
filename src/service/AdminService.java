@@ -17,7 +17,7 @@ public class AdminService {
 
     public static void service(){
         String menu  = """
-                   ADMIN MENU: 
+                   ADMIN MENU:
               0.Back🔙
               1.Add section
               2.Show sections

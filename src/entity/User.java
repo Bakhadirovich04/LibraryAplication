@@ -131,7 +131,7 @@ public class User {
                 ", role=" + role +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", email='" + "*****" + '\'' +
+                ", email='" + email+ '\'' +
                 ", password='" + "*****" + '\'' +
                 ", balance=" + balance +
                 '}';
