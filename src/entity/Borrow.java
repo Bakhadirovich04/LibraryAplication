@@ -83,4 +83,13 @@ public class Borrow {
                 ", returnTime=" + returnTime +
                 '}';
     }
+    public String toString1() {
+        return "Borrow{" +
+                "id='" + id + '\'' +
+                ", book=" + book +
+                ", borrowState=" + borrowState +
+                ", borrowedTime=" + borrowedTime +
+                ", returnTime=" + returnTime +
+                '}';
+    }
 }

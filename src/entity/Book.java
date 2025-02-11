@@ -99,4 +99,11 @@ public class Book {
 
 
     }
+    public String toString1() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author +
+                '}';
+    }
 }

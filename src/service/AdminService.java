@@ -1,6 +1,7 @@
 package service;
 import entity.*;
 import entity.enums.BorrowState;
+import entity.enums.Role;
 import entity.enums.SectionState;
 
 import java.time.Duration;
@@ -75,18 +76,39 @@ public class AdminService {
         System.out.println("Enter UserId: ");
         String id = strScanner.nextLine();
         boolean bor = false;
+        User user1=new User() ;
         for (int i = 0; i < users.size() ; i++) {
           if( Objects.equals(id,users.get(i).getId())) {
                 bor = true;
-                User user = users.get(i);
-              System.out.println("              User:      ");
-              System.out.println(user);
-              System.out.println("Borrow: "+user.getBorrowList());
-              System.out.println("History: "+user.getHistories());
+            user1 = users.get(i);
+            break;
             }
         }
         if(!bor){
             System.out.println("This user does not exist on the network😡");
+        }
+        else{
+            System.out.println("User in use: "+user1.toString1());
+            System.out.println("Borrowed list");
+            boolean borrowIsEmpty=true;
+            boolean historyIsEmpty=true;
+            for (Borrow borrow : user1.getBorrowList()) {
+                if(borrow.getBorrowState().equals(BorrowState.BORROWED)){
+                System.out.println(borrow.toString1());
+                borrowIsEmpty=false;
+                }
+            }
+            if(borrowIsEmpty){
+                System.out.println("The list of borrowed books is empty..🚫🚫");
+            }
+            System.out.println("History List");
+            for (History history : user1.getHistories()) {
+                System.out.println(history);
+                historyIsEmpty=false;
+            }
+            if(historyIsEmpty){
+                System.out.println("This user has not borrowed any books yet..🚫🚫");
+            }
         }
     }
 
@@ -113,7 +135,9 @@ public class AdminService {
     private static void showUsers() {
         System.out.println("                             Users:        ");
         for (int i = 0; i < users.size() ; i++) {
-            System.out.println(i+1+".User = >Id:  "+users.get(i).getId() +"  userName: "+users.get(i).getName());
+            if(users.get(i).getRole().equals(Role.USER)) {
+                System.out.println(i + 1 + ".User = >Id:  " + users.get(i).getId() + "  userName: " + users.get(i).getName());
+            }
         }
 
     }
@@ -252,6 +276,7 @@ public class AdminService {
         System.out.println("Enter section name: ");
         String name = strScanner.nextLine();
         if (!testSection(name)){
+            section.setBooks(new ArrayList<>());
             section.setName(name);
             sections.add(section);
         }else{

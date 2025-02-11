@@ -6,6 +6,8 @@ import entity.enums.BorrowState;
 import entity.enums.SectionState;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static db.DataSource.*;
@@ -99,10 +101,11 @@ public class UserService {
             return;
         }
         boolean checkBorrowed=true;
-        for (Borrow borrow : getCurrentUser().getBorrowList()) {
-            if (borrow.getBorrowState().equals(BorrowState.BORROWED)) {
+        List<Borrow> lists=getCurrentUser().getBorrowList();
+        for (int i=0; i<lists.size();i++) {
+            if (lists.get(i).getBorrowState().equals(BorrowState.BORROWED)) {
                 checkBorrowed=false;
-                System.out.println(borrow.getBook().toString(getCurrentUser()));
+                System.out.println(i+1+". "+lists.get(i).getBook().toString(getCurrentUser()));
             }
         }
         if(checkBorrowed){
@@ -111,13 +114,13 @@ public class UserService {
             return;
         }
         System.out.println("============================================================================================");
-        System.out.print("Select the title of the book you want to return: ");
-        String title = strScanner.nextLine();
+        System.out.print("Choose which book: ");
+        int title = intScanner.nextInt();
         Borrow borrow12=null;
         boolean checkBorrow=true;
-        for (Borrow borrow : getCurrentUser().getBorrowList()) {
-            if(borrow.getBook().getTitle().equals(title)){
-                borrow12=borrow;
+        for (int i=0; i<lists.size();i++) {
+            if(i==title-1){
+                borrow12=lists.get(i);
                 checkBorrow=false;
                 break;
             }
@@ -128,6 +131,7 @@ public class UserService {
         else {
             borrow12.getBook().setAvailableBook(borrow12.getBook().getAvailableBook()+1);
             borrow12.setBorrowState(BorrowState.RETURNED);
+
             for (History history : getCurrentUser().getHistories()) {
                  if(history.getBorrowedDate().equals(borrow12.getBorrowedTime())){
                      history.setReturnDate(LocalDateTime.now());
@@ -135,6 +139,7 @@ public class UserService {
                  }
             }
             getCurrentUser().setCountBook(getCurrentUser().getCountBook()-1);
+            getCurrentUser().getBorrowList().remove(title-1);
             System.out.println("The book has been returned successfully...✔️");
         }
 

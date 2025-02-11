@@ -57,7 +57,7 @@ public class History {
     public String toString() {
         return "History{" +
                 "id='" + id + '\'' +
-                ", book=" + book +
+                ", book=" + book.toString1() +
                 ", borrowedDate=" + borrowedDate +
                 ", returnDate=" + returnDate +
                 '}';
