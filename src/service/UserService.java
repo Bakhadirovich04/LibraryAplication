@@ -1,15 +1,11 @@
 package service;
 
-import entity.Book;
 import entity.*;
 import entity.enums.BorrowState;
 import entity.enums.SectionState;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import static db.DataSource.*;
 public class UserService {
     public static void service(){

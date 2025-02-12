@@ -132,7 +132,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email+ '\'' +
-                ", password='" + "*****" + '\'' +
+                ", password='" + "******" + '\'' +
                 ", balance=" + balance +
                 '}';
     }

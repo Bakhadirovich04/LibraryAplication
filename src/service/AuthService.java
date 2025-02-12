@@ -2,10 +2,8 @@ package service;
 
 import entity.User;
 import entity.enums.Role;
-
 import java.util.ArrayList;
 import java.util.UUID;
-
 import static db.DataSource.*;
 
 public class AuthService {
